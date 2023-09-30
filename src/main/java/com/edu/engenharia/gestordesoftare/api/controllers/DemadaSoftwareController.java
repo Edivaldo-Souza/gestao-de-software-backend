@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,10 @@ import com.edu.engenharia.gestordesoftare.domain.services.DemandaSoftwareService
 import com.edu.engenharia.gestordesoftare.api.dto.CriarDemandaDTO;
 import com.edu.engenharia.gestordesoftare.api.dto.DemandaSoftwareDTO;
 import com.edu.engenharia.gestordesoftare.domain.entities.DemandaSoftware;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -26,10 +30,6 @@ public class DemadaSoftwareController {
 	@Autowired
 	private ModelMapper mapper;
 	
-	@GetMapping
-	public List<DemandaSoftware> getAll(){
-		return null;
-	}
 	
 	@PostMapping
 	public ResponseEntity<DemandaSoftwareDTO> post(@Valid @RequestBody CriarDemandaDTO d) {
@@ -41,6 +41,31 @@ public class DemadaSoftwareController {
 		else return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+	@GetMapping
+	public List<DemandaSoftwareDTO> getDemandasCliente(){
+		List<DemandaSoftwareDTO> lista = new ArrayList<DemandaSoftwareDTO>();
+		for(DemandaSoftware d : service.searchForAll()) {
+			lista.add(mapper.map(d, DemandaSoftwareDTO.class));
+		}
+		return lista;
+	}
 	
+	@GetMapping("/cliente/{uuid}")
+	public List<DemandaSoftwareDTO> getDemandasCliente(@PathVariable UUID uuid){
+		List<DemandaSoftwareDTO> lista = new ArrayList<DemandaSoftwareDTO>();
+		for(DemandaSoftware d : service.searchByUuidCliente(uuid)) {
+			lista.add(mapper.map(d, DemandaSoftwareDTO.class));
+		}
+		return lista;
+	}
+	
+	@GetMapping("/dev/{uuid}")
+	public List<DemandaSoftwareDTO> getDemandasDevs(@PathVariable UUID uuid){
+		List<DemandaSoftwareDTO> lista = new ArrayList<DemandaSoftwareDTO>();
+		for(DemandaSoftware d : service.searchByUuidDev(uuid)) {
+			lista.add(mapper.map(d, DemandaSoftwareDTO.class));
+		}
+		return lista;
+	}
 	
 }

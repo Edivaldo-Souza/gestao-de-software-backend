@@ -1,5 +1,7 @@
 package com.edu.engenharia.gestordesoftare.api.dto;
 
+import java.util.UUID;
+
 import javax.validation.constraints.NotBlank;
 
 public class DemandaSoftwareDTO {
@@ -7,6 +9,9 @@ public class DemandaSoftwareDTO {
 	private String titulo;
 	@NotBlank(message="titulo nao pode ser vazio")
 	private String descricao;
+	private UUID uuid;
+	private UUID uuidCliente;
+	private UUID uuidDev;
 	private String dataEntrega;
 	private String dateEncerramento;
 	private int prioridade; 
@@ -54,4 +59,23 @@ public class DemandaSoftwareDTO {
 	public void setPrazo(int prazo) {
 		this.prazo = prazo;
 	}
+	public UUID getUuid() {
+		return uuid;
+	}
+	public void setUuid(UUID uuid) {
+		this.uuid = uuid;
+	}
+	public UUID getUuidCliente() {
+		return uuidCliente;
+	}
+	public void setUuidCliente(UUID uuidCliente) {
+		this.uuidCliente = uuidCliente;
+	}
+	public UUID getUuidDev() {
+		return uuidDev;
+	}
+	public void setUuidDev(UUID uuidDev) {
+		this.uuidDev = uuidDev;
+	}
+	
 }
