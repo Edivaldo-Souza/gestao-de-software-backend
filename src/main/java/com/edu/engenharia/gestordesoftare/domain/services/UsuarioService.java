@@ -1,5 +1,6 @@
 package com.edu.engenharia.gestordesoftare.domain.services;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,9 @@ public class UsuarioService {
 	
 	public Usuario searchByNome(String nome) {
 		return repository.findByNome(nome);
+	}
+	
+	public List<Usuario> searchByTipo(int tipo){
+		return repository.findByTipoUsuario(tipo);
 	}
 }

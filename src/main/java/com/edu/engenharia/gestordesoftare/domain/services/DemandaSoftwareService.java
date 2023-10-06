@@ -7,6 +7,7 @@ import com.edu.engenharia.gestordesoftare.domain.repository.DemandaRepository;
 
 import java.util.List;
 import java.util.UUID;
+import java.time.LocalDate;
 
 @Service
 public class DemandaSoftwareService {
@@ -22,7 +23,6 @@ public class DemandaSoftwareService {
 		df.setUuid(UUID.randomUUID());
 		df.setUuidDev(UUID.randomUUID());
 		df.setDataEncerramento("Em análise");
-		df.setDataEntrega("Em análise");
 		
 		return repository.save(df);
 	}
@@ -31,11 +31,49 @@ public class DemandaSoftwareService {
 		return repository.findAll();
 	}
 	
+	public List<DemandaSoftware> searchBySituacao(int i){
+		return repository.findBySituacao(i);
+	}
+	
 	public List<DemandaSoftware> searchByUuidCliente(UUID uuid) {
 		return repository.findByUuidCliente(uuid);
 	}
 	
 	public List<DemandaSoftware> searchByUuidDev(UUID uuid) {
 		return repository.findByUuidDev(uuid);
+	}
+	
+	public DemandaSoftware update(DemandaSoftware df) {
+		DemandaSoftware d = repository.findByUuid(df.getUuid());
+		
+		df.setId(d.getId());
+		df.setTitulo(d.getTitulo());
+		df.setDescricao(d.getDescricao());
+		df.setDataCriacao(d.getDataCriacao());
+		df.setUuidCliente(d.getUuidCliente());
+		return repository.save(df);
+	}
+	
+	public DemandaSoftware encerrarDemanda(DemandaSoftware df) {
+		DemandaSoftware d = repository.findByUuid(df.getUuid());
+		
+		df.setId(d.getId());
+		df.setTitulo(d.getTitulo());
+		df.setDescricao(d.getDescricao());
+		df.setDataCriacao(d.getDataCriacao());
+		df.setUuidCliente(d.getUuidCliente());
+		df.setUuidDev(d.getUuidDev());
+		df.setPrazo(d.getPrazo());
+		df.setPrioridade(d.getPrioridade());
+		return repository.save(df);
+	}
+	
+	public boolean delete(UUID id) {
+		DemandaSoftware ds = repository.findByUuid(id);
+		if(ds!=null) {
+			repository.delete(ds);
+			return true;
+		}
+		else return false;
 	}
 }

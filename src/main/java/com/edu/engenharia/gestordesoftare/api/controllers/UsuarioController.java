@@ -1,5 +1,8 @@
 package com.edu.engenharia.gestordesoftare.api.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
@@ -47,5 +50,14 @@ public class UsuarioController {
 			return new ResponseEntity<>(u,HttpStatus.OK);
 		}
 		else return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@GetMapping("/devs")
+	public List<UsuarioDTO> getByTipo(){
+		List<UsuarioDTO> lista =new ArrayList<UsuarioDTO>();
+		for(Usuario u: service.searchByTipo(2)) {
+			lista.add(mapper.map(u, UsuarioDTO.class));
+		}
+		return lista;
 	}
 }

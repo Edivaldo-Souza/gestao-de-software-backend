@@ -28,11 +28,11 @@ public class DemandaSoftware {
 	private UUID uuidDev;
 	private String titulo;
 	private String descricao;
-	private String dataEntrega;
+	private String dataCriacao;
 	private String dataEncerramento;
 	// baixa=0; media=1; alta=2 
 	private int prioridade;
-	// em_processamento=0; concluida=1
+	// em_analise=0; submetida=1; concluida=2
 	private int situacao;
 	private int prazo;
 	public String getTitulo() {
@@ -47,11 +47,11 @@ public class DemandaSoftware {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String getDataEntrega() {
-		return dataEntrega;
+	public String getDataCriacao() {
+		return dataCriacao;
 	}
-	public void setDataEntrega(String dataEntrega) {
-		this.dataEntrega = dataEntrega;
+	public void setDataCriacao(String dataEntrega) {
+		this.dataCriacao = dataEntrega;
 	}
 	public String getDataEncerramento() {
 		return dataEncerramento;

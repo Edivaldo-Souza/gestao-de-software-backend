@@ -6,6 +6,7 @@ public class CriarDemandaDTO {
 	private String titulo;
 	private String descricao;
 	private UUID uuidCliente;
+	private String dataCriacao;
 	public String getTitulo() {
 		return titulo;
 	}
@@ -24,6 +25,13 @@ public class CriarDemandaDTO {
 	public void setUuidCliente(UUID uuidCliente) {
 		this.uuidCliente = uuidCliente;
 	}
+	public String getDataCriacao() {
+		return dataCriacao;
+	}
+	public void setDataCriacao(String dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+	
 	
 	
 }

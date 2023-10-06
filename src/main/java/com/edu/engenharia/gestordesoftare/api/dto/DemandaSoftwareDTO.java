@@ -12,8 +12,8 @@ public class DemandaSoftwareDTO {
 	private UUID uuid;
 	private UUID uuidCliente;
 	private UUID uuidDev;
-	private String dataEntrega;
-	private String dateEncerramento;
+	private String dataCriacao;
+	private String dataEncerramento;
 	private int prioridade; 
 	private int situacao;
 	private int prazo;
@@ -29,17 +29,17 @@ public class DemandaSoftwareDTO {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String getDataEntrega() {
-		return dataEntrega;
+	public String getDataCriacao() {
+		return dataCriacao;
 	}
-	public void setDataEntrega(String dataEntrega) {
-		this.dataEntrega = dataEntrega;
+	public void setDataCriacao(String dataEntrega) {
+		this.dataCriacao = dataEntrega;
 	}
-	public String getDateEncerramento() {
-		return dateEncerramento;
+	public String getDataEncerramento() {
+		return dataEncerramento;
 	}
-	public void setDateEncerramento(String dateEncerramento) {
-		this.dateEncerramento = dateEncerramento;
+	public void setDataEncerramento(String dateEncerramento) {
+		this.dataEncerramento = dateEncerramento;
 	}
 	public int getPrioridade() {
 		return prioridade;
